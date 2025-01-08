@@ -1,9 +1,8 @@
 <template>
-  <main class="bg-black w-screen h-screen">
-    <p class="px-3 py-2 rounded-lg bg-white fixed top-4 left-4 font-mono font-semibold">Websocket: {{ status }}</p>
+  <main class="bg-black w-screen h-screen overflow-hidden flex items-center justify-center">
     <canvas
       ref="faceCanvas"
-      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full"/>
+      class="w-full h-full object-contain"/>
   </main>
 </template>
 <script setup lang="ts">
@@ -17,19 +16,16 @@ const ros = new RosLib.Ros({
   url: RosWebsocketUrl
 })
 
-const status = ref<"connected" | "closed">("closed")
-
 ros.on("connection", () => {
-  status.value = "connected";
-  console.log('Connected to ROSBridge WebSocket server.');
+  console.log('🙌 Connected to WebSocket');
 });
 
-ros.on('error', function(error) {
-  console.log('Error connecting to ROSBridge WebSocket server: ', error);
+ros.on('error', (error) => {
+  console.log('⚠ Error occurred in WebSocket Connection: ', error);
 });
 
-ros.on('close', function() {
-  console.log('Connection to ROSBridge WebSocket server closed.');
+ros.on('close', () => {
+  console.log('👋 WebSocket Closed!');
 });
 
 const faceImageTopic = new RosLib.Topic({
