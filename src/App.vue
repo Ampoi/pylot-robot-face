@@ -1,7 +1,9 @@
 <template>
-  <main class="bg-zinc-200">
-    <p>{{ status }}</p>
-    <canvas ref="faceCanvas"/>
+  <main class="bg-black w-screen h-screen">
+    <p class="px-3 py-2 rounded-lg bg-white fixed top-4 left-4 font-mono font-semibold">Websocket: {{ status }}</p>
+    <canvas
+      ref="faceCanvas"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full"/>
   </main>
 </template>
 <script setup lang="ts">
