@@ -5,7 +5,15 @@
 - bun 1.1.42
 
 # 実行方法
+```
+#(パッケージ・環境のインストール)
+curl -fsSL https://bun.sh/install | bash #bun
+sudo apt update
+apt search rosbridge_suite #rosbridge_suite
+```
 ```bash
+ros2 launch rosbridge_server rosbridge_websocket_launch.xml #rosbridge_serverの起動
+
 git clone https://github.com/Ampoi/pylot-robot-face
 cd pylot-robot-face
 bun i
